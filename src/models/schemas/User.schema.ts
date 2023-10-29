@@ -1,5 +1,5 @@
 import { ObjectId } from 'mongodb'
-import { UserVerifyStatus } from '~/constants/emuns'
+import { UserVerifyStatus } from '~/constants/enums'
 //đặt interface vì theo chuẩn ts thôi, chứ làm thực tế thì khác
 interface UserType {
   _id?: ObjectId
