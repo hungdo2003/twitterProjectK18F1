@@ -7,11 +7,11 @@ import { TokenPayload } from '~/models/requests/User.request'
 config()
 export const signToken = ({
   payload,
-  privateKey = process.env.JWT_SECRET as string,
+  privateKey,
   options = { algorithm: 'HS256' }
 }: {
   payload: string | object | Buffer
-  privateKey?: string
+  privateKey: string
   options?: jwt.SignOptions
 }) => {
   return new Promise<string>((resolve, reject) => {
@@ -23,14 +23,8 @@ export const signToken = ({
     })
   })
 }
-//ham kiem tra token co phai la cua minh tao ra khong , neu co thitra ra payload
-export const verifyToken = ({
-  token,
-  secretOrPublickey = process.env.JWT_SECRET as string
-}: {
-  token: string
-  secretOrPublickey?: string
-}) => {
+//ham kiem tra token co phai la cua minh tao ra khong , neu co thi tra ra payload
+export const verifyToken = ({ token, secretOrPublickey }: { token: string; secretOrPublickey: string }) => {
   return new Promise<TokenPayload>((resolve, rejects) => {
     jwt.verify(token, secretOrPublickey, (error, decoded) => {
       if (error) throw rejects(error)
