@@ -1,8 +1,7 @@
-//dinh nghia nhung request, body, param, query
-
 import { JwtPayload } from 'jsonwebtoken'
 import { TokenType } from '~/constants/enums'
 
+// định nghĩa những request body | param | query
 export interface RegisterReqBody {
   name: string
   email: string
@@ -10,6 +9,7 @@ export interface RegisterReqBody {
   confirm_password: string
   date_of_birth: string
 }
+
 //định nghĩa req cho thằng logoutController
 export interface LogoutReqBody {
   refresh_token: string
@@ -20,4 +20,10 @@ export interface TokenPayload extends JwtPayload {
 }
 export interface EmailVerifyReqBody {
   email_verify_token: string
+}
+export interface ForgotPasswordReqBody {
+  email: string
+}
+export interface VerifyForgotPasswordTokenReqBody {
+  forgot_password_token: string
 }

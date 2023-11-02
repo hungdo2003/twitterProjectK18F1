@@ -8,6 +8,8 @@ export const USERS_MESSAGES = {
   EMAIL_ALREADY_EXISTS: 'Email already exists',
   EMAIL_IS_REQUIRED: 'Email is required',
   EMAIL_IS_INVALID: 'Email is invalid',
+  EMAIL_VERIFY_SUCCESS: 'Email verify success',
+  RESEND_EMAIL_VERIFY_SUCCESS: 'resend email is success',
   //password
   PASSWORD_IS_REQUIRED: 'Password is required',
   PASSWORD_MUST_BE_A_STRING: 'Password must be a string',
@@ -25,15 +27,19 @@ export const USERS_MESSAGES = {
   DATE_OF_BIRTH_BE_ISO8601: 'Date of birth must be ISO8601',
   //user
   EMAIL_OR_PASSWORD_IS_INCORRECT: 'Email or password is incorrect',
-  LOGIN_SUCCESS: 'Login success',
-  REGISTER_SUCCESS: 'Register success',
+  EMAIL_VERIFY_TOKEN_IS_REQUIRED: 'Email verify token is required',
+  EMAIL_ALREADY_VERIFIED_BEFORE: 'Email already verified before',
+  LOGIN_SUCCESS: 'login successfully',
+  REGISTER_SUCCESS: 'Register successfullys',
   ACCESS_TOKEN_IS_REQUIRED: 'Access token is required',
   REFRESH_TOKEN_IS_REQUIRED: 'Refresh token is required',
   REFRESH_TOKEN_IS_INVALID: 'Refresh token is invalid',
-  USED_REFRESH_TOKEN_IS_NOT_EXISTS: 'Used refresh token or not exists',
-  LOGOUT_SUCCESS: 'Logout success',
-  EMAIL_VERIFY_TOKEN_IS_REQUIRED: 'Email verify is required',
-  USER_NOT_FOUND: 'User is not found',
-  EMAIL_ALREADY_VERIFIED_BEFORE: 'Email already verified before',
-  EMAIL_VERIFY_SUCCESS: 'Email verify successfully'
+  USED_REFRESH_TOKEN_OR_NOT_EXIST: ' Used refresh token or not exist',
+  USER_NOT_FOUND: 'User not found',
+  LOGOUT_SUCCESS: 'Logout successfully',
+  FORGOT_PASSWORD_SUCCESS: 'forgot password success',
+  CHECK_EMAIL_TORESET_PASSWORD: 'Check email to reset password',
+  FOTGOT_PASSWORD_TOKEN_IS_REQUIRED: 'FOTGOT_PASSWORD_TOKEN_IS_REQUIRED',
+  FORGOT_PASSWORD_TOKEN_IS_INVALID: 'FORGOT_PASSWORD_TOKEN_IS_INVALID',
+  VERIFY_FORGOT_PASSWORD_TOKEN_SUCCESS: 'verify forgot password token success'
 } as const

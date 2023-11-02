@@ -23,11 +23,14 @@ export const signToken = ({
     })
   })
 }
-//ham kiem tra token co phai la cua minh tao ra khong , neu co thi tra ra payload
-export const verifyToken = ({ token, secretOrPublickey }: { token: string; secretOrPublickey: string }) => {
-  return new Promise<TokenPayload>((resolve, rejects) => {
-    jwt.verify(token, secretOrPublickey, (error, decoded) => {
-      if (error) throw rejects(error)
+//
+// hàm kiểm tra token có phải của mình tạo ra ko
+//nếu có thì trả ra payload
+// không thì ... ném lỗi
+export const verifyToken = ({ token, secretOrPublicKey }: { token: string; secretOrPublicKey: string }) => {
+  return new Promise<TokenPayload>((resolve, reject) => {
+    jwt.verify(token, secretOrPublicKey, (error, decoded) => {
+      if (error) throw reject(error)
       resolve(decoded as TokenPayload)
     })
   })
