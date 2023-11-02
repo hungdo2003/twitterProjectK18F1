@@ -158,6 +158,35 @@ class UserServices {
     // gửi mail cho user
     //thông báo gửi thành công
   }
+  async resetPassword({ user_id, password }: { user_id: string; password: string }) {
+    //dung user_id do de tim user va update lai password
+    await databaseService.users.updateOne({ _id: new ObjectId(user_id) }, [
+      {
+        $set: {
+          forgot_password_token: '',
+          password: hashPassword(password),
+          updated_at: '$$NOW'
+        }
+      }
+    ])
+    return {
+      message: USERS_MESSAGES.RESET_PASSWORD_SUCCESSFULLY
+    }
+  }
+
+  async getMe(user_id: string) {
+    const user = await databaseService.users.findOne(
+      { _id: new ObjectId(user_id) },
+      {
+        projection: {
+          password: 0,
+          email_verify_token: 0,
+          forgot_password_token: 0
+        }
+      }
+    )
+    return user // sẽ k có những thuộc tính nêu trên, tránh bị lộ thông tin
+  }
 }
 
 const userServices = new UserServices()

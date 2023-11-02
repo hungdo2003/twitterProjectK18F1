@@ -8,6 +8,7 @@ import {
   ForgotPasswordReqBody,
   LogoutReqBody,
   RegisterReqBody,
+  ResetPasswordReqBody,
   TokenPayload
 } from '~/models/requests/User.request'
 import { ObjectId } from 'mongodb'
@@ -114,5 +115,26 @@ export const forgotPasswordController = async (
 export const verifyForgotPasswordController = async (req: Request, res: Response) => {
   res.json({
     message: USERS_MESSAGES.VERIFY_FORGOT_PASSWORD_TOKEN_SUCCESS
+  })
+}
+
+export const resetPasswordController = async (
+  req: Request<ParamsDictionary, any, ResetPasswordReqBody>,
+  res: Response
+) => {
+  const { user_id } = req.decoded_forgot_password_token as TokenPayload
+  const { password } = req.body //khi cham den body thi can dinh nghia no
+  //dung user_id do de tim user va update lai password
+  const result = await userServices.resetPassword({ user_id, password })
+  return res.json(result)
+}
+
+export const getMeController = async (req: Request, res: Response) => {
+  const { user_id } = req.decoded_authorization as TokenPayload
+  //vao database tim user cos user_id nay dua cho client
+  const result = await userServices.getMe(user_id)
+  return res.json({
+    message: USERS_MESSAGES.GET_ME_SUCCESS,
+    result
   })
 }
